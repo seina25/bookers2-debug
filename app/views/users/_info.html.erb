@@ -3,11 +3,18 @@
   <tr>
 	  <th>name</th>
 	  <th><%= user.name %></th>
-	  <th></th>
   </tr>
   <tr>
 	  <th>introduction</th>
 	  <th><%= user.introduction %></th>
+  </tr>
+  <tr>
+    <th>follows</th>
+    <th><%= follow_users.followings.count %></th>
+  </tr>
+  <tr>
+    <th>followers</th>
+    <th><%= follow_users.followers.count %></th>
   </tr>
 </table>
 
