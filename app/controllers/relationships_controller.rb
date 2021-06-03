@@ -14,11 +14,11 @@ class RelationshipsController < ApplicationController
   # フォローとフォロワーの一覧ページ用
   def followings
     @user = User.find(params[:user_id])
-    @follow_users = @user.followings
+    @following_users = @user.followings
   end
 
   def followers
     @user = User.find(params[:user_id])
-    @follow_users = @user.followers
+    @follower_users = @user.followers
   end
 end

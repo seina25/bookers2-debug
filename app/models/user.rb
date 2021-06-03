@@ -15,6 +15,7 @@ class User < ApplicationRecord
   # 与フォロー関係を通じて参照→follower_idをフォローしている人
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followings, through: :relationships, source: :followed
+  
   # フォローする・外す・フォローしているか確認を行うメソッドたち
   # ユーザをフォローする
   def follow(user_id)

@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   get 'home/about' => 'homes#about'
   devise_for :users
   resources :users do
-    resources :relationships, only: [:create, :destroy]
-    get 'followings' => 'relasionships#followings', as: 'followings'
+    resource :relationships, only: [:create, :destroy]
+    get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
   end
   resources :books, only: [:show, :index, :create, :edit, :update] do
