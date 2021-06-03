@@ -22,4 +22,21 @@
       </div>
     </div>
   </nav>
+  <div class="row">
+    <div class="col-xs-6 col-xs-ofset-3 mx-auto text_center" stayle="margin-top: 25px;">
+      <% if user_signed_in? %>
+       <%= form_with url:search_search_path, method: :get, local: true do |f| %>
+
+       <!--"search[value]"を記述することででparams[:search]を使って、入力した文字を受け取れるようにする-->
+       <%= f.text_field 'search[value]' %>
+       <!--参照するモデル(model)　：表示名 => 参照モデル名-->
+       <%= f.select 'search[model]', options_for_select({ "User" => "user", "Book" => "book" }) %>
+       <!--検索手法(how)　：表示名 => 変数名-->
+       <%= f.select 'search[how]', options_for_select({ "完全一致" => "match", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partical" }) %>
+
+       <%= f.submit 'Seach' %>
+       <% end %>
+      <% end %>
+    </div>
+  </div>
 </header>
