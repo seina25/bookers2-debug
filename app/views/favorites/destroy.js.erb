@@ -1,0 +1,2 @@
+<!--対象の子要素のhtmlを、カッコ内のものに変更する。-->
+$('#favorite_buttons_<%= @blog.id %>').html("<%= j(render 'favorites/favorite', book: @book) %>");

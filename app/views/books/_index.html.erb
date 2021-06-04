@@ -22,21 +22,12 @@
       <td>
         <%= book.body %>
       </td>
-      <td>
-        <% if book.favorited_by?(current_user) %>
-          <p>
-            <%= link_to book_favorites_path(book), method: :delete do %>
-              💗<%= book.favorites.count %>
-            <% end %>
-          </p>
-          <% else %>
-          <p>
-            <%= link_to book_favorites_path(book), method: :post do %>
-              🖤<%= book.favorites.count %>
-            <% end %>
-          </p>
-      <% end %>
+      
+      <!--いいね機能の非同期通信-->
+      <td id="favorite_buttons_<%= book.id %>">
+      <%= render 'favorites/favorite', book: book %>
       </td>
+      
       <td>
         <p>
           <%= link_to "#{book.book_comments.count} コメント", book_path(book.id) %>

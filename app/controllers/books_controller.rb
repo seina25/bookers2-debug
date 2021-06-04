@@ -7,7 +7,6 @@ class BooksController < ApplicationController
     @comment = BookComment.new
     @following_users = @user.followings
     @follower_users = @user.followers
-
   end
 
   def index
@@ -16,7 +15,6 @@ class BooksController < ApplicationController
     @user = current_user
     @following_users = @user.followings
     @follower_users = @user.followers
-
   end
 
   def create

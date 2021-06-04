@@ -32,21 +32,12 @@
             <td>
               <%= @book.body %>
             </td>
-            <td>
-              <% if @book.favorited_by?(current_user) %>
-                <p>
-                  <%= link_to book_favorites_path(@book), method: :delete do %>
-                    💗<%= @book.favorites.count %>
-                  <% end %>
-                </p>
-                <% else %>
-                <p>
-                  <%= link_to book_favorites_path(@book), method: :post do %>
-                    🖤<%= @book.favorites.count %>
-                  <% end %>
-                </p>
-              <% end %>
+
+            <!--いいね機能の非同期通信-->
+            <td id="favorite_buttons_<%= @book.id %>">
+                <%= render 'favorites/favorite', book: @book %>
             </td>
+
             <td>
               <% if @user.id == current_user.id %>
                 <%= link_to 'Edit', edit_book_path(@book.id), class: "btn btn-sm btn-success edit_book_#{@book.id}" %>
@@ -95,7 +86,7 @@
         </div>
       <% end %>
       <div class="new-comment">
-      <%= form_with(model:[@book, @comment], local: true) do |f| %>
+      <%= form_with(model:[@book, @comment], remote: true) do |f| %>
        <%= f.text_area :comment,placeholder: "コメントをここに" ,size: "60x5" %>
        <%= f.submit "送信📖" %>
       <% end %>
