@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="col-xs-12">
+
+<div class="left-button">
+  <%= link_to "Users", users_path, class: "edit-link" %>
+</div>
+<h4 class="rooms-title">
+  D M 🌷
+</h4>
+<% @entries.each do |e| %>
+  <div class="user-name">
+  <strong>
+    <%= attachment_image_tag(e.user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %>
+      <a class="rooms-user-link" href="/users/<%= e.user.id %>">💫<%= e.user.name %>さん</a>
+  </strong>
+  </div>
+<% end %>
+<hr>
+<div class="chats">
+  <div class="chat">
+    <% if @messages.any? %>
+      <% @messages.each do |m| %>
+        <div class="chat-box">
+            <%= attachment_image_tag(m.user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %>
+          <div class="chat-hukidashi"> <strong><%= m.message %></strong>
+            <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div><br>
+  <%= render 'layouts/errors', obj: @message %>
+  <div class="posts">
+    <%= form_with model: @message do |f| %>
+      <%= f.text_field :message, placeholder: "message here!!" , size: 70, class:"form-text-field" %>
+        <%= f.hidden_field :room_id, value: @room.id %>
+          <%= f.submit "投稿",class: 'form-submit'%>
+     <% end %>
+    </div>
+  </div>
+</div>
+</div>
