@@ -7,6 +7,7 @@ class BooksController < ApplicationController
     @comment = BookComment.new
     @following_users = @user.followings
     @follower_users = @user.followers
+    impressionist(@book, nil, unique: [:session_hash.to_s])
   end
 
   def index

@@ -30,7 +30,7 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
-  
+
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
 
