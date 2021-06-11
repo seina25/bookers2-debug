@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @books = @user.books
     @book = Book.new
     @follower_users = @user.followers
-    @following_users =@user.followings
+    @following_users = @user.followings
     # チャット機能
     @currentUserEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)

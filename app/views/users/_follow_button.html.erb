@@ -1,5 +1,5 @@
 <div class="row">
-<% unless @user == current_user %>
+<% unless user == current_user %>
   <% if current_user.following?(user) %>
     <%= link_to "フォロー外す🥺🥺", user_relationships_path(user.id), method: :delete, class: 'btn btn-outline-danger btn-block' %>
   <% else %>
